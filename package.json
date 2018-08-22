@@ -1,0 +1,23 @@
+{
+  "name": "rrr",
+  "version": "1.0.0",
+  "description": "recycle game",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keno10cr/rrr.git"
+  },
+  "author": "Keiner Kenton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keno10cr/rrr/issues"
+  },
+  "homepage": "https://github.com/keno10cr/rrr#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

@@ -1,0 +1,328 @@
+@font-face {
+  font-family: '3MCircularFontBold';
+  src: url('3M Circular OTF/3MCircular-Bold.otf');
+}
+
+@font-face {
+  font-family: '3MCircularFontBook';
+  src: url('3M Circular OTF/3MCircular-Book.otf');
+}
+
+.RRR-nav{
+  background-color: #fff;
+  border-bottom-color: #16b316;
+  border-bottom-width: 7px;
+}
+
+a.navbar-brand {
+  font-size: 32px;
+  font-family: '3MCircularFontBold', 'Jua', sans-serif;
+}
+
+h1,h2,h3,h4{
+  font-family: '3MCircularFontBold', 'Jua', sans-serif;
+}
+
+.fun-fact-div {
+    padding-bottom: 15px;
+    border-top-color: #2aa922;
+    border-top-width: 7px;
+    border-top-style: solid;
+}
+
+body { 
+  
+  /*background-image: url('https://www.3m.com/3m_theme_assets/themes/3MTheme/assets/images/unicorn/repeating_meshed_grid.png');*/
+  background-image: url('https://image.ibb.co/nFS8B8/pattern_white.png');
+  
+  background-size: 100% 100%;
+  height: 100%;
+}
+
+
+/******************** Game Header Section ********************/
+#wrapper-table-header{
+  display: table; 
+  width: 100%
+}
+#left-game-header{
+  margin-top:10px; 
+  margin-right:10px; 
+  text-align: left; 
+  width: 20%; 
+  display: table-cell;
+}
+#mid-game-header{
+  margin-top:10px; 
+  margin-right:10px; 
+  text-align: center; 
+  width: 60%; 
+  display: table-cell;
+}
+#right-game-header{
+  margin-top:10px; 
+  margin-right:10px; 
+  text-align: center; 
+  width: 20%; 
+  display: table-cell;
+}
+/******************** End Game Header Section ********************/
+
+/******************** Starts Game Recycle Bins Section ********************/
+#wrapper-table-rb{
+  display: table; 
+  width: 100%
+}
+.rb-lane{
+  text-align: left;
+  margin-bottom:10px; 
+  width: 25%;
+  display: table-cell;
+}
+
+.game-rb {
+  width: 35%;
+  min-width: 50px;
+}
+/******************** End Game Recycle Bins Section ********************/
+
+.footer a {
+  color:#fff;
+}
+.footer {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  background-color: #0066ff;
+  height: 50px;
+  padding-top: 15px;
+  font-weight: bold;
+  border-bottom: 7px solid;
+  border-color: yellow;
+}
+/*
+Only needed when everything was empty?
+*/
+.content {
+  min-height: calc(100vh - 50px);
+}
+
+.logo {
+  height: 42px; 
+  padding-top: 10px;
+  padding-left: 15%;
+  float: right;
+  padding-right: 10%;
+}
+
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+}
+
+.navbar-collapse {
+    text-align: center;
+}
+
+ul { 
+  font-size: 20px;
+  font-weight: bold;
+  
+}
+
+/******************** From CodePen ********************/
+
+body {
+  height: 100%;
+  width: 100%;
+  /*
+  margin: 0;
+  background-color: #45d678;
+  font-family: sans-serif;
+  */
+  font-family: '3MCircularFontBook', 'Jua', sans-serif;
+}
+
+#minioutput{
+  background-color: #000;
+  /* width: 312px; 
+  height: 200px;*/
+  color: #FFF;
+  /* left: 12%; */
+  /* position: relative; */
+  margin-bottom: 20px;
+  /* text-align: center; */
+  /* padding: 10px; */
+}
+
+#game-div{
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  background-image: url('https://image.ibb.co/ke73do/game_bg_1.png');
+  overflow: hidden;
+  background-size:100% 100%;
+  
+}
+
+/*
+https://image.ibb.co/ke73do/game_bg_1.png
+https://image.ibb.co/cFEG98/bg.png
+}*/
+
+#game-rb-area{
+ position: absolute;
+width: 100%; 
+bottom: 0;
+/*background-image: url('https://image.ibb.co/d8Uip8/basureros.png');*/
+}
+
+.trashItem{
+  position: absolute;
+  height: 66px;
+  width: 66px;
+  background-repeat: no-repeat, repeat;
+  margin: 10px;/*TEMP: I have to fix the images to remove this line*/
+  /*border-radius: 5px;*/
+  /*box-shadow: 0px 1px 8px 0px black;*/
+ /*background-image: url('https://image.ibb.co/eYa1bo/plastic_bottle.png');/*Esto que lo haga en el JS*/
+}
+
+#trash_1{
+  top: -100px;
+  left: 0;
+}
+
+
+#playerscore, #time{
+/*
+-webkit-text-stroke: 3px black;
+ */
+ font-size: 22px !important;
+font-weight: 900;
+ color: yellow;
+ text-shadow:
+     3px 3px 0 #000,
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+/*Text Stoke : https://css-tricks.com/adding-stroke-to-web-text/*/
+}
+
+div#playerscore {
+  text-align: right;
+}
+
+.visual_guide {
+margin-top: 10px;
+height: 50px;
+width: 50px;
+}
+
+/*Time CSS*/
+
+#time{
+  text-align: right;
+  color: yellow;
+  padding-right: 15px;
+}
+#extraTimeImage{
+  display:block; 
+  text-align: right; 
+  position: absolute; 
+  right:0;
+  margin-right: 3px;
+  width:0;
+  height:0;
+}
+
+.timeContainer {
+  width:45px;
+  height:20px;
+}
+
+#imgscore{
+width:55px;
+}
+
+#imgscore{
+width:55px;
+}
+
+.fullTrash{
+  height: 100px;
+  width: 70px;
+  position: absolute;
+  visibility: visible;
+  left: -100px;
+  z-index: 1;  
+}
+
+div#trash_1 {
+ /* background-size: 66px;Default Dimension*/
+  background-size: 100%;
+}
+
+#minioutput hr {
+  margin: 5px auto;
+}
+
+/*Images
+
+https://image.ibb.co/c0TWW8/01_eaten_apple.png
+https://image.ibb.co/m0qdB8/01_verde.png
+https://image.ibb.co/fj8yB8/02_azul.png
+https://image.ibb.co/hgeido/02_plastic_bottle.png
+https://image.ibb.co/kuK5r8/03_amarillo.png
+https://image.ibb.co/f3e5r8/03_lata_cayendo.png
+https://image.ibb.co/hb1wyo/03_lata.png
+https://image.ibb.co/cjadB8/3_M_RRR_SM_top_right.png
+https://image.ibb.co/kEbUJo/04_gris.png
+https://image.ibb.co/gFBwyo/04_paper_ball.png
+https://image.ibb.co/fHc3do/05_negro.png
+https://image.ibb.co/cJObyo/06_rojo.png
+https://image.ibb.co/dNeujT/07_naranja.png
+https://image.ibb.co/gqon4T/08_cafe.png
+https://image.ibb.co/nkVOdo/basura_llena.png
+https://image.ibb.co/bMHfPT/Basurero_4.png
+https://image.ibb.co/jy9ido/basureros_5.png
+https://image.ibb.co/jsyLPT/basureros_8.png
+https://image.ibb.co/gvGUJo/combos_2.png
+https://image.ibb.co/eGjGyo/combos_3.png
+https://image.ibb.co/isYWW8/combos_4.png
+https://image.ibb.co/fSiWW8/combos_5.png
+https://image.ibb.co/enBJB8/combos_6.png
+https://image.ibb.co/g7rwyo/combos_7.png
+https://image.ibb.co/ke73do/game_bg_1.png
+https://image.ibb.co/fDzS4T/game_bg_2.png
+https://image.ibb.co/gkPujT/hand_clean.png
+https://image.ibb.co/hrz5r8/hand_swipe_both.png
+https://image.ibb.co/einQr8/hand_swipe_left.png
+https://image.ibb.co/e7ibyo/hand_swipe_right.png
+https://image.ibb.co/bJjido/next_01_eaten_apple.png
+https://image.ibb.co/ghOLPT/next_02_plastic_bottle.png
+https://image.ibb.co/ieu5r8/next_03_lata.png
+https://image.ibb.co/gkhEjT/next_04_paper_ball.png
+https://image.ibb.co/bNfpJo/pattern_black_10.png
+https://image.ibb.co/nFS8B8/pattern_white.png
+https://image.ibb.co/c0KGyo/puntos100.png
+https://image.ibb.co/esHrW8/puntos200.png
+https://image.ibb.co/jMz5r8/puntos300.png
+https://image.ibb.co/isL6yo/puntosmenos100.png
+https://image.ibb.co/eA7myo/puntosmenos200.png
+https://image.ibb.co/cs0jjT/puntosmenos300.png
+https://image.ibb.co/e4wPjT/seconds_3.png
+https://image.ibb.co/eLDFr8/seconds_5.png
+https://image.ibb.co/kWNmyo/seconds_7.png
+https://image.ibb.co/iza6yo/seconds_10.png
+https://image.ibb.co/fJ5TB8/seconds_12.png
+https://image.ibb.co/gDsVPT/seconds_15_red.png
+https://image.ibb.co/iXX8B8/seconds_15.png
+https://image.ibb.co/dQfvr8/sidebar_icon_1.png
+https://image.ibb.co/dJiFr8/sidebar_icon_2.png
+https://image.ibb.co/e5sx4T/sidebar_icon_3.png
+
+*/

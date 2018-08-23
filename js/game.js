@@ -8,6 +8,16 @@ $(function() {
       var rb_area = $('#game-rb-area');//div with all the RB
       var moveCompleted = true;
       var laneTracker = 0;
+      //RBs
+      var rb1 = $('#image-rb-1');
+      var rb2 = $('#image-rb-2');
+      var rb3 = $('#image-rb-3');
+      var rb4 = $('#image-rb-4');
+      var rb5 = $('#image-rb-5');
+      var rb6 = $('#image-rb-6');
+      var rb7 = $('#image-rb-7');
+      var rb8 = $('#image-rb-8');
+
   
       var cont_combo = 0;//counts the no missing strike
       var cont_multiplicador = 1;//counts the combo
@@ -30,6 +40,16 @@ $(function() {
       var container_height = 0;
       var trash_width = parseInt(trash.width());
       var trash_height = parseInt(trash.height());
+      
+      //
+      var rb1_position = parseInt(rb1.css('left'));
+      var rb2_position = parseInt(rb2.css('left'));
+      var rb3_position = parseInt(rb3.css('left'));
+      var rb4_position = parseInt(rb4.css('left'));
+      var rb5_position = parseInt(rb5.css('left'));
+      var rb6_position = parseInt(rb6.css('left'));
+      var rb7_position = parseInt(rb7.css('left'));
+      var rb8_position = parseInt(rb8.css('left'));
     
       //some other declarations
       var game_over = false;
@@ -41,8 +61,8 @@ $(function() {
       var timeDate = new Date();
 
       //Data Structures
-      var comboUrls = ["https://image.ibb.co/gvGUJo/combos_2.png","https://image.ibb.co/eGjGyo/combos_3.png", "https://image.ibb.co/isYWW8/combos_4.png", "https://image.ibb.co/fSiWW8/combos_5.png", "https://image.ibb.co/enBJB8/combos_6.png", "https://image.ibb.co/g7rwyo/combos_7.png"];
-      var timeUrls = ["https://image.ibb.co/eLDFr8/seconds_5.png", "https://image.ibb.co/iza6yo/seconds_10.png", "https://image.ibb.co/iXX8B8/seconds_15.png"];
+      var comboUrls = ["images/combos_2.png","images/combos_3.png", "images/combos_4.png", "images/combos_5.png", "images/combos_6.png", "images/combos_7.png"];
+      var timeUrls = ["images/seconds_5.png", "images/seconds_10.png", "images/seconds_15.png"];
       var trash_container = {
         "trash": [
            //{ "name":"Eaten Apple", "speed":2, "url": "images/trash/01_eaten_apple_game.png", "correct_lane":0, "visual_guide":"images/trash/01_eaten_apple.png"},
@@ -68,14 +88,14 @@ $(function() {
   
       var recycle_bins_container = {
         "dumpsters": [
-          { "name":"Green", "status":false, "rb_lane":1, "space": max_trash },
-          { "name":"Blue", "status":false, "rb_lane":2, "space": max_trash },
-          { "name":"Yellow", "status":false, "rb_lane":3, "space": max_trash },
-          { "name":"Gray", "status":false, "rb_lane":4, "space": max_trash },
-          { "name":"Black", "status":false, "rb_lane":5, "space": max_trash },
-          { "name":"Red", "status":false, "rb_lane":6, "space": max_trash },
-          { "name":"Orange", "status":false, "rb_lane":7, "space": max_trash },
-          { "name":"Brown", "status":false, "rb_lane":8, "space": max_trash }
+          { "name":"Green", "status":false, "rb_lane":1, "space": max_trash, "rb_coordinates":"0" },
+          { "name":"Blue", "status":false, "rb_lane":2, "space": max_trash, "rb_coordinates":"0" },
+          { "name":"Yellow", "status":false, "rb_lane":3, "space": max_trash, "rb_coordinates":"0" },
+          { "name":"Gray", "status":false, "rb_lane":4, "space": max_trash, "rb_coordinates":"0" },
+          { "name":"Black", "status":false, "rb_lane":5, "space": max_trash, "rb_coordinates":"0" },
+          { "name":"Red", "status":false, "rb_lane":6, "space": max_trash, "rb_coordinates":"0" },
+          { "name":"Orange", "status":false, "rb_lane":7, "space": max_trash, "rb_coordinates":"0" },
+          { "name":"Brown", "status":false, "rb_lane":8, "space": max_trash, "rb_coordinates":"0" }
         ]
       }; //contains the info of the RB
 
@@ -166,6 +186,15 @@ $(function() {
       return randomLaneMax;
       //returns a random value for the next lane
       
+    }
+
+    $( window ).resize(function() {
+      flexLanes();
+    });
+
+    //this function will get the position of the RB, this info will define the lanes.
+    function flexLanes (){
+      alert ("size changed to: "+$( window ).width());
     }
 
     function setGameDimension(){
@@ -326,13 +355,13 @@ $(function() {
         var imgscore= $('#imgscore'); //imagen
         
         if(plusscore==100){
-            imgscore.attr('src','https://image.ibb.co/c0KGyo/puntos100.png')
+            imgscore.attr('src','images/puntos100.png')
         }
         if(plusscore==200){
-            imgscore.attr('src','https://image.ibb.co/esHrW8/puntos200.png')
+            imgscore.attr('src','images/puntos200.png')
         }
         if(plusscore==300){
-            imgscore.attr('src','https://image.ibb.co/jMz5r8/puntos300.png')
+            imgscore.attr('src','images/puntos300.png')
         }
         
         if(cont_multiplicador>=2){
@@ -348,13 +377,13 @@ $(function() {
   function setReducePoints(substractscore)   {
   
   if(substractscore==100){
-    imgscore.attr('src','https://image.ibb.co/isL6yo/puntosmenos100.png')
+    imgscore.attr('src','images/puntosmenos100.png')
   }
   if(substractscore==200){
-    imgscore.attr('src','https://image.ibb.co/eA7myo/puntosmenos200.png')
+    imgscore.attr('src','images/puntosmenos200.png')
   }
   if(substractscore==300){
-    imgscore.attr('src','https://image.ibb.co/cs0jjT/puntosmenos300.png')
+    imgscore.attr('src','images/puntosmenos300.png')
   }
   
   scorecontainer.fadeIn(1000);
@@ -499,7 +528,7 @@ function takeLid(index){
   var trash_lids = $('#trash_lids');
   var innerHTML = "";
   for(var i = 0; i < max_lane; i++){
-    innerHTML+= '<img id="recycle_full_'+i+'" src="https://image.ibb.co/nkVOdo/basura_llena.png" class="fullTrash">';
+    innerHTML+= '<img id="recycle_full_'+i+'" src="images/basura_llena.png" class="fullTrash">';
   }
   trash_lids.html(innerHTML);
 }

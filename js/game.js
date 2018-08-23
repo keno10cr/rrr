@@ -379,7 +379,7 @@ function initTimer(){
 }
 
 function decTime(){
-  var currentSecs = timeDate.getMinutes() * 60 + timeDate.getSeconds() - 1;
+  var currentSecs = timeDate.getMinutes() * 2+ timeDate.getSeconds() - 1;
   if(currentSecs < 0){
     currentSecs = 0;
     stop_the_game();
@@ -412,6 +412,7 @@ function addTime(plusTime){
 function stop_the_game() {
     game_over = true;
     cancelAnimationFrame(anim_id);
+    $('#results_div').fadeIn(2250);
     //restart_div.slideDown();
     //restart_btn.focus();
 }

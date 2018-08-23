@@ -58,6 +58,7 @@ $(function() {
       var speed = 1;
       var max_trash = 3;//handles the amount of trash needed to fill up the RB
       var timeDate = new Date();
+      var game_over_speed = 1500;
 
       //Data Structures
       var comboUrls = ["images/combos_2.png","images/combos_3.png", "images/combos_4.png", "images/combos_5.png", "images/combos_6.png", "images/combos_7.png"];
@@ -117,6 +118,13 @@ $(function() {
       addRandomTrash();
       reAssignHelp();
       nextTrash();
+
+      $("#reset_button").click(function() {
+          $('#main_results_div').animate({'height': 0}, game_over_speed, null, function(){
+              restartGame();
+              $('#main_results_div').css('display', 'none');
+          }); 
+      });
     
       //-------------------------------------------//Change the lane of the trash//-------------------------------------------//
     
@@ -407,7 +415,7 @@ function initTimer(){
 }
 
 function decTime(){
-  var currentSecs = timeDate.getMinutes() * 5+ timeDate.getSeconds() - 1;
+  var currentSecs = timeDate.getMinutes() * 60+ timeDate.getSeconds() - 1;
   if(currentSecs < 0){
     currentSecs = 0;
     stop_the_game();
@@ -441,16 +449,11 @@ function addTime(plusTime){
 function stop_the_game() {
     cancelAnimationFrame(anim_id);
     $('#main_results_div').animate({'opacity': 'show', 'height': container.height() 
-      + 5}, 2000); // + 5 to alway cover the entire game div
+      + 5}, game_over_speed); // + 5 to alway cover the entire game div
 
     var results_score = $('#results_score').html() + playerscore;
     $('#results_score').html(results_score);
 
-    /*$("#reset_button").click(function() {
-      $('#main_results_div').animate({'display': 'none', 'height': 0}, 2000, null, function(){
-          restartGame();
-      }); 
-    });*/
     //restart_div.slideDown();
     //restart_btn.focus();
 }
@@ -575,9 +578,9 @@ function takeLid(index){
 
   function restartGame(){ // needs refinement
       playerscore = 0;
-      for(var i = 0; i < 8; i ++){
+      for(var i = 0; i < max_lane; i ++){
         recycle_bins_container.dumpsters[i].space = max_trash;
-        empty_trash();
+        $('#recycle_full_'+i).css('visibility', 'hidden');
       }
       resetCombo();
 
@@ -588,8 +591,9 @@ function takeLid(index){
       nextTrash();    
       anim_id = requestAnimationFrame(repeat);
       initTimer();
+      $('#results_score').html("Score: ");
 
-  }
+    }
   
   }); //end main function
   

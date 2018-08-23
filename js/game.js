@@ -85,6 +85,8 @@ $(function() {
         ]
       }; //contains everything I need to know about the trash to display it randomly or by type
       //correct lane starts at 0.
+
+      var trash_bag = "images/trash/Trash_Bag_Black.png";
   
       var recycle_bins_container = {
         "dumpsters": [
@@ -502,9 +504,11 @@ function takeLid(index){
   };
   
   var cloneLid = elements.lid.clone();
+  cloneLid.attr("src", trash_bag);
   //alert("Cloned: "+cloneLid);  //meterle la imagen nueva de la basura aqui!
   cloneLid.appendTo('body').css('position','absolute').css('top',options.position.origin.initial.top)
     .css('left',options.position.origin.initial.left);
+
   
   elements.lid.css('visibility', 'hidden');
   

@@ -33,7 +33,7 @@ h1,h2,h3,h4{
 body { 
   
   /*background-image: url('https://www.3m.com/3m_theme_assets/themes/3MTheme/assets/images/unicorn/repeating_meshed_grid.png');*/
-  background-image: url('https://image.ibb.co/nFS8B8/pattern_white.png');
+  background-image: url('../images/pattern_white.png');
   
   background-size: 100% 100%;
   height: 100%;
@@ -74,7 +74,7 @@ body {
   width: 100%
 }
 .rb-lane{
-  text-align: left;
+  text-align: center;
   margin-bottom:10px; 
   width: 25%;
   display: table-cell;
@@ -161,7 +161,7 @@ body {
   position: relative;
   width: 100%;
   height: 75vh;
-  background-image: url('https://image.ibb.co/ke73do/game_bg_1.png');
+  background-image: url('../images/game_bg_1.png');
   overflow: hidden;
   background-size:100% 100%;
   

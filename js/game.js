@@ -52,7 +52,6 @@ $(function() {
       var rb8_position = parseInt(rb8.css('left'));
     
       //some other declarations
-      var game_over = false;
       var max_lane = 4;
       var max_good = 5;
       var max_combo = 4; //starts from 0
@@ -408,16 +407,17 @@ function initTimer(){
 }
 
 function decTime(){
-  var currentSecs = timeDate.getMinutes() * 2+ timeDate.getSeconds() - 1;
+  var currentSecs = timeDate.getMinutes() * 5+ timeDate.getSeconds() - 1;
   if(currentSecs < 0){
     currentSecs = 0;
     stop_the_game();
+  } else {
+    timeDate.setMinutes(0);
+    timeDate.setSeconds(currentSecs);
+    //timer.html(timeDate.toLocaleTimeString('it-IT').replace(/\u200E/g,"").substring(3,8));
+    timer.html(timeDate.toLocaleTimeString('it-IT').substring(3,8));
+    setTimeout(decTime, 1000);
   }
-  timeDate.setMinutes(0);
-  timeDate.setSeconds(currentSecs);
-  //timer.html(timeDate.toLocaleTimeString('it-IT').replace(/\u200E/g,"").substring(3,8));
-  timer.html(timeDate.toLocaleTimeString('it-IT').substring(3,8));
-  setTimeout(decTime, 1000);
 }
 
 function addTime(plusTime){
@@ -439,9 +439,18 @@ function addTime(plusTime){
 
 //Stop Game
 function stop_the_game() {
-    game_over = true;
     cancelAnimationFrame(anim_id);
-    $('#results_div').fadeIn(2250);
+    $('#main_results_div').animate({'opacity': 'show', 'height': container.height() 
+      + 5}, 2000); // + 5 to alway cover the entire game div
+
+    var results_score = $('#results_score').html() + playerscore;
+    $('#results_score').html(results_score);
+
+    /*$("#reset_button").click(function() {
+      $('#main_results_div').animate({'display': 'none', 'height': 0}, 2000, null, function(){
+          restartGame();
+      }); 
+    });*/
     //restart_div.slideDown();
     //restart_btn.focus();
 }
@@ -480,6 +489,8 @@ function putLid(index){
     var lid_html = $('#recycle_full_' + index);
     lid_html.css('left',laneSize * index + 2);
     lid_html.css('bottom', 7);
+    lid_html.css('position', 'absolute');
+    lid_html.css('z-index', 9);
     lid_html.css('visibility', 'visible');
   }
 
@@ -562,7 +573,23 @@ function takeLid(index){
     imgCombo.attr('src', ""); //the -2 its because at cont_mult at 2 that will mean to display the img from comboUrls at position 0.
   }
 
+  function restartGame(){ // needs refinement
+      playerscore = 0;
+      for(var i = 0; i < 8; i ++){
+        recycle_bins_container.dumpsters[i].space = max_trash;
+        empty_trash();
+      }
+      resetCombo();
 
+      addRandomTrash();
+      addRandomTrash();
+      addRandomTrash();
+      reAssignHelp();
+      nextTrash();    
+      anim_id = requestAnimationFrame(repeat);
+      initTimer();
+
+  }
   
   }); //end main function
   

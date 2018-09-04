@@ -135,7 +135,7 @@ $(function() {
         
           if(ft){ //sets the position of the first trash, 
             var new_lane_pos = 0;
-            var first_trash=Math.floor(Math.random() * 4) + 1;
+            var first_trash=Math.floor(Math.random() * max_lane);
             new_lane_pos = recycle_bins_container.dumpsters[first_trash].rb_coordinates;
             laneTracker = first_trash;
             trashy.css('left', new_lane_pos);

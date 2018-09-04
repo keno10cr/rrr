@@ -157,6 +157,10 @@ body {
   /* padding: 10px; */
 }
 
+span#myoutput i {
+  color: red;
+}
+
 #game-div{
   position: relative;
   width: 100%;
@@ -269,6 +273,8 @@ div#trash_1 {
 #minioutput hr {
   margin: 5px auto;
 }
+
+
 
 /*Images
 

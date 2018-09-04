@@ -8,15 +8,7 @@ $(function() {
       var rb_area = $('#game-rb-area');//div with all the RB
       var moveCompleted = true;
       var laneTracker = 0;
-      //RBs
-      var rb1 = $('#image-rb-1');
-      var rb2 = $('#image-rb-2');
-      var rb3 = $('#image-rb-3');
-      var rb4 = $('#image-rb-4');
-      var rb5 = $('#image-rb-5');
-      var rb6 = $('#image-rb-6');
-      var rb7 = $('#image-rb-7');
-      var rb8 = $('#image-rb-8');
+      var ft=true; //first trash..
 
   
       var cont_combo = 0;//counts the no missing strike
@@ -40,20 +32,10 @@ $(function() {
       var container_height = 0;
       var trash_width = parseInt(trash.width());
       var trash_height = parseInt(trash.height());
-      
-      //
-      var rb1_position = parseInt(rb1.css('left'));
-      var rb2_position = parseInt(rb2.css('left'));
-      var rb3_position = parseInt(rb3.css('left'));
-      var rb4_position = parseInt(rb4.css('left'));
-      var rb5_position = parseInt(rb5.css('left'));
-      var rb6_position = parseInt(rb6.css('left'));
-      var rb7_position = parseInt(rb7.css('left'));
-      var rb8_position = parseInt(rb8.css('left'));
     
       //some other declarations
       var game_over = false;
-      var max_lane = 4;
+      var max_lane = 4;//starts from 1
       var max_good = 5;
       var max_combo = 4; //starts from 0
       var speed = 1;
@@ -61,8 +43,8 @@ $(function() {
       var timeDate = new Date();
 
       //Data Structures
-      var comboUrls = ["images/combos_2.png","images/combos_3.png", "images/combos_4.png", "images/combos_5.png", "images/combos_6.png", "images/combos_7.png"];
-      var timeUrls = ["images/seconds_5.png", "images/seconds_10.png", "images/seconds_15.png"];
+      var comboUrls = ["images/combos-2.png","images/combos-3.png", "images/combos-4.png", "images/combos-5.png", "images/combos-6.png", "images/combos-7.png"];
+      var timeUrls = ["images/seconds-5.png", "images/seconds-10.png", "images/seconds-15.png"];
       var trash_container = {
         "trash": [
            //{ "name":"Eaten Apple", "speed":2, "url": "images/trash/01_eaten_apple_game.png", "correct_lane":0, "visual_guide":"images/trash/01_eaten_apple.png"},
@@ -141,9 +123,19 @@ $(function() {
           var rb_area_height = parseInt(rb_area.height());
           var trash_in = rb_area_height-(rb_area_height*0.4); //.4 of the trash is inside the RB
           var trash_away = rb_area_height-(rb_area_height*0.7);//.7 of the trash is inside the RB
+          
           setGameDimension();
         
-        document.getElementById("myoutput").innerHTML = "container height: "+ container_height;
+          if(ft){ //sets the position of the first trash, 
+            var new_lane_pos = 0;
+            var first_trash=Math.floor(Math.random() * 4) + 1;
+            new_lane_pos = recycle_bins_container.dumpsters[first_trash].rb_coordinates;
+            laneTracker = first_trash;
+            trashy.css('left', new_lane_pos);
+            ft=false;
+          }
+          
+        document.getElementById("myoutput").innerHTML = "Game Wight: "+ container_width + " RB1:<i>"+recycle_bins_container.dumpsters[0].rb_coordinates + "</i> RB2:<i>"+recycle_bins_container.dumpsters[1].rb_coordinates + "</i> RB3:<i>"+recycle_bins_container.dumpsters[2].rb_coordinates + "</i> RB4:<i>"+recycle_bins_container.dumpsters[3].rb_coordinates+"</i>";
         document.getElementById("myoutput2").innerHTML = "Bottom: "+ trash_current_bottom +" Top: "+ trash_current_top +" Left: "+ trash_current_left + " Speed: "+speed +" CL: "+laneTracker+" RBH: "+rb_area_height;
         
         //635 this is near the RB 
@@ -153,56 +145,76 @@ $(function() {
         } 
         if (trash_current_bottom <= trash_in && my_collision == false) {
             //trash bottom possition vs Recycle Bins Heights 
-            //alert('K');//once this validation has been done, then it won't be possible to move the trash! #todo
+            //once this validation has been done, then it won't be possible to move the trash! #todo
             my_collision = true;
             collision();
 
         }
         if (trash_current_bottom <= trash_away) {
-            //alert("entro");
-              trash_current_top = -100;
-              my_collision = false;
-              var trash_left = parseInt(Math.random() * (container_width - trash_width));
-            //container width = 368
-            
-            //document.getElementById("myoutput3").innerHTML = "New Lane: 50 ";
-            
-             // trashy.css('left', trash_left);
-             trashy.css('left', newLane(container_width, max_lane));
-                                                            //here is where the new Y position is being defined...
-            //trashy.css('left', 50);
+            trash_current_top = -100;
+            my_collision = false;
+            trashy.css('left', newLane());//here is where the new Y position is being defined...
             nextTrash(); //sets the next current trash values
           }
-          trashy.css('top', trash_current_top + speed);
+          trashy.css('top', trash_current_top + speed); //this is what moves trash down.:
       }
     
     
-    function newLane (game_max_width, max_lane) {
-      //alert ("max width: " +game_max_width);//332
-      var laneSize = Math.floor(game_max_width/max_lane);//55.3
-      var nextRandomLane = Math.floor(Math.random() * max_lane);//nums from 0 up to 5/8
-      //alert ("Next Random Lane: " + nextRandomLane);//
-      var randomLaneMax = laneSize * nextRandomLane; //6 * 55.3
-      
+    function newLane () {
+      var nextRandomLane = Math.floor(Math.random() * (max_lane-1));//so that I can start couting from 0, up to 3
       laneTracker = nextRandomLane;
-      return randomLaneMax;
-      //returns a random value for the next lane
+      var randomLaneMax = recycle_bins_container.dumpsters[nextRandomLane].rb_coordinates;//25
       
+      return randomLaneMax;
+      //returns a random value for the next lane 
     }
 
     $( window ).resize(function() {
-      flexLanes();
+      //flexLanes();
     });
 
-    //this function will get the position of the RB, this info will define the lanes.
+    //v2. this function will generate the lanes of the trash via an operation. this also will fill up a global object with the game coordinates
+          
     function flexLanes (){
-      alert ("size changed to: "+$( window ).width());
+      //alert ("size changed to: "+$( window ).width());
+      //alert("entro al metodo "+rb1_position);
+
+      /*$('img', '#wrapper-table-rb').each(function () {
+        alert("this= "+$(this).css('left')); //this is returns auto therefor doesn't work for what I need. I needed the coordinates of the RB to match them with the trash 
+      });*/
+      var cont_RB=0;
+      $('div', '#wrapper-table-rb').each(function () {
+        //counts the amount of divs, each div is a RB.
+        cont_RB+=1;//0,1,2,3
+      });
+      
+      var win_width = $( window ).width();
+      var lane_size = container_width/cont_RB;//100
+      var centered_lane = Math.floor((container_width/cont_RB+(lane_size*0.25)));//25
+
+      for (i = 0; i < cont_RB; i++) {
+        if(i==0){
+          recycle_bins_container.dumpsters[i].rb_coordinates = lane_size*0.25;//25
+          //alert(i+" New Coordinates "+ recycle_bins_container.dumpsters[i].rb_coordinates);
+        }else{
+          recycle_bins_container.dumpsters[i].rb_coordinates = (lane_size*i)+lane_size*0.25;
+          //alert(i+" New Coordinates "+ recycle_bins_container.dumpsters[i].rb_coordinates);
+        }  
+        //this set the new coodinates on the JSON of the RB.. TODO: move right and left according these values.
+        //toRight
+        //toLeft
+        //newLane
+      }
+      
+      //alert("carriles: "+cont_RB + " tamanho pantalla: " + win_width);
+      
     }
 
     function setGameDimension(){
         //to redefine game dimension, its being called on the motor, therefor its constantly checking.
-        container_width = parseInt(container.width());
+        container_width = parseInt(container.width());//game-div
         container_height = parseInt(container.height());
+        flexLanes();
     }
     
     function nextTrash () {
@@ -282,44 +294,34 @@ $(function() {
       speed = 10;
       
     }
-  
-  function toRight(trashy){
-      var trash_current_left = parseInt(trashy.css('left'));
-      
-      //alert(trash_current_right); //this works
-      //alert(container_width);//331
-      var laneSize = Math.floor(container_width/max_lane);//55.3
-      var maxLaneY = Math.floor(laneSize*(max_lane-1)); //its the last columb or lane to the right //275
-      if(trash_current_left < maxLaneY){
-        //trashy.css('left', trash_current_left+laneSize); //old way to move via css\
-        moveCompleted = false;
-        trashy.animate({left: trash_current_left+laneSize}, 100, null, function(){
-          moveCompleted = true;
-        }); //jquery way to move via csss
-        //alert("current left: "+trash_current_left+"max left "+maxLaneY);
-        laneTracker ++;
-        //alert ("new lane: "+laneTracker);
+
+      function toRight(trashy){
+          moveCompleted = false;
+          
+          if(laneTracker<max_lane && laneTracker+1 !=max_lane){
+            //alert("RIGHT! "+laneTracker +" Max Lane: "+max_lane);
+            laneTracker ++;
+            }
+            trashy.animate({left: recycle_bins_container.dumpsters[laneTracker].rb_coordinates}, 100, null, function(){
+              moveCompleted = true;
+            });     
+          
       }
+
+    function toLeft(trashy){
+      moveCompleted = false;
+      
+      if(laneTracker>0){
+        //alert("LT TO LEFT: "+laneTracker);
+        laneTracker --;
+      }
+        trashy.animate({left: recycle_bins_container.dumpsters[laneTracker].rb_coordinates}, 100, null, function(){
+        moveCompleted = true;
+      });
+      
+    
+        
   }
-  
-      function toLeft(trashy){
-        var trash_current_left = parseInt(trashy.css('left'));
-        //alert(trash_current_right); //this works
-        //alert(container_width);//331
-        var laneSize = Math.floor(container_width/max_lane);//55
-        var maxLaneY = Math.floor(laneSize*(max_lane-1)); //its the last columb or lane to the right //275
-        var minLaneY = 0; //its the last columb or lane to the right //275
-        if(trash_current_left > minLaneY){
-            //trashy.css('left', trash_current_left-laneSize); 
-            moveCompleted = false;
-            trashy.animate({left: trash_current_left-laneSize}, 100, null, function(){
-            moveCompleted = true;
-            });
-            //alert("current left: "+trash_current_left+"max left "+maxLaneY);
-            laneTracker --;
-            //alert ("new lane: "+laneTracker);
-        }
-    }
   
   
   function uniKeyCode(event) {
@@ -477,7 +479,7 @@ function is_full_bin(bin_index){
 function putLid(index){
     var laneSize = Math.floor(container_width/max_lane);
     var lid_html = $('#recycle_full_' + index);
-    lid_html.css('left',laneSize * index + 2);
+    lid_html.css('left',laneSize * index + 2);//center full RB here, or replace //check with Adrian.
     lid_html.css('bottom', 7);
     lid_html.css('visibility', 'visible');
   }
@@ -547,7 +549,6 @@ function takeLid(index){
            cont_multiplicador++;
         }
         //validate not going over x5 combo
-        //alert ("Combo x"+cont_multiplicador);
         imgCombo.attr('src', comboUrls[cont_multiplicador-2]); //the -2 its because at cont_mult at 2 that will mean to display the img from comboUrls at position 0.
         
     }

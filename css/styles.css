@@ -111,9 +111,10 @@ Only needed when everything was empty?
 }
 
 .logo {
-  height: 42px; 
+  height: 42px;
   padding-top: 10px;
-  padding-left: 15%;
+  padding-bottom: 8px;
+  padding-left: 0%;
   float: right;
   padding-right: 10%;
 }
@@ -132,6 +133,21 @@ ul {
   font-weight: bold;
   
 }
+/******************** Landing Page********************/
+
+.my-landing img:hover {
+  opacity: 0.7;
+}
+
+/******************** Why Recycle? ********************/
+
+/******************** How To Page ********************/
+
+.howto .row {
+  margin-bottom: 70px;
+}
+
+/******************** High Scores? ********************/
 
 /******************** From CodePen ********************/
 
@@ -172,11 +188,6 @@ span#myoutput i {
   
 }
 
-/*
-https://image.ibb.co/ke73do/game_bg_1.png
-https://image.ibb.co/cFEG98/bg.png
-}*/
-
 #game-rb-area{
  position: absolute;
 width: 100%; 
@@ -186,10 +197,14 @@ bottom: 0;
 
 .trashItem{
   position: absolute;
-  height: 66px;
-  width: 66px;
+  height: 60px;
+  width: 60px;
+  /*
+  66:original
+  109px:tamanho que le da el basurero en monitor grande...
+  -78 se salen cosas todavia
+  */
   background-repeat: no-repeat, repeat;
-  margin: 10px;/*TEMP: I have to fix the images to remove this line*/
   /*border-radius: 5px;*/
   /*box-shadow: 0px 1px 8px 0px black;*/
  /*background-image: url('https://image.ibb.co/eYa1bo/plastic_bottle.png');/*Esto que lo haga en el JS*/
@@ -277,7 +292,7 @@ div#trash_1 {
 
 /*Results Page Styles*/
 #main_results_div {
-  background-color: #F4E9B4;
+  background-color: #e7e7e7;
   position: absolute;  
   width: 100%;  
   top: 0; 
@@ -340,66 +355,8 @@ div#trash_1 {
 }
 
 
-/*Images
 
-https://image.ibb.co/c0TWW8/01_eaten_apple.png
-https://image.ibb.co/m0qdB8/01_verde.png
-https://image.ibb.co/fj8yB8/02_azul.png
-https://image.ibb.co/hgeido/02_plastic_bottle.png
-https://image.ibb.co/kuK5r8/03_amarillo.png
-https://image.ibb.co/f3e5r8/03_lata_cayendo.png
-https://image.ibb.co/hb1wyo/03_lata.png
-https://image.ibb.co/cjadB8/3_M_RRR_SM_top_right.png
-https://image.ibb.co/kEbUJo/04_gris.png
-https://image.ibb.co/gFBwyo/04_paper_ball.png
-https://image.ibb.co/fHc3do/05_negro.png
-https://image.ibb.co/cJObyo/06_rojo.png
-https://image.ibb.co/dNeujT/07_naranja.png
-https://image.ibb.co/gqon4T/08_cafe.png
-https://image.ibb.co/nkVOdo/basura_llena.png
-https://image.ibb.co/bMHfPT/Basurero_4.png
-https://image.ibb.co/jy9ido/basureros_5.png
-https://image.ibb.co/jsyLPT/basureros_8.png
-https://image.ibb.co/gvGUJo/combos_2.png
-https://image.ibb.co/eGjGyo/combos_3.png
-https://image.ibb.co/isYWW8/combos_4.png
-https://image.ibb.co/fSiWW8/combos_5.png
-https://image.ibb.co/enBJB8/combos_6.png
-https://image.ibb.co/g7rwyo/combos_7.png
-https://image.ibb.co/ke73do/game_bg_1.png
-https://image.ibb.co/fDzS4T/game_bg_2.png
-https://image.ibb.co/gkPujT/hand_clean.png
-https://image.ibb.co/hrz5r8/hand_swipe_both.png
-https://image.ibb.co/einQr8/hand_swipe_left.png
-https://image.ibb.co/e7ibyo/hand_swipe_right.png
-https://image.ibb.co/bJjido/next_01_eaten_apple.png
-https://image.ibb.co/ghOLPT/next_02_plastic_bottle.png
-https://image.ibb.co/ieu5r8/next_03_lata.png
-https://image.ibb.co/gkhEjT/next_04_paper_ball.png
-https://image.ibb.co/bNfpJo/pattern_black_10.png
-https://image.ibb.co/nFS8B8/pattern_white.png
-https://image.ibb.co/c0KGyo/puntos100.png
-https://image.ibb.co/esHrW8/puntos200.png
-https://image.ibb.co/jMz5r8/puntos300.png
-https://image.ibb.co/isL6yo/puntosmenos100.png
-https://image.ibb.co/eA7myo/puntosmenos200.png
-https://image.ibb.co/cs0jjT/puntosmenos300.png
-https://image.ibb.co/e4wPjT/seconds_3.png
-https://image.ibb.co/eLDFr8/seconds_5.png
-https://image.ibb.co/kWNmyo/seconds_7.png
-https://image.ibb.co/iza6yo/seconds_10.png
-https://image.ibb.co/fJ5TB8/seconds_12.png
-https://image.ibb.co/gDsVPT/seconds_15_red.png
-https://image.ibb.co/iXX8B8/seconds_15.png
-https://image.ibb.co/dQfvr8/sidebar_icon_1.png
-https://image.ibb.co/dJiFr8/sidebar_icon_2.png
-https://image.ibb.co/e5sx4T/sidebar_icon_3.png
-
-*/
-
-
-
-// google font subsetting, see Heydon Pickering's: http://www.sitepoint.com/joy-of-subsets-web-fonts/
+/*google font subsetting, see Heydon Pickering's: http://www.sitepoint.com/joy-of-subsets-web-fonts/*/
 @import url('//fonts.googleapis.com/css?family=Pacifico&text=Pure');
 @import url('//fonts.googleapis.com/css?family=Roboto:700&text=css');
 @import url('//fonts.googleapis.com/css?family=Kaushan+Script&text=!');

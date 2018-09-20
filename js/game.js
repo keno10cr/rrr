@@ -8,7 +8,7 @@ $(function() {
       var rb_area = $('#game-rb-area');//div with all the RB
       var moveCompleted = true;
       var laneTracker = 0;
-      var ft=true; //first trash..
+      var ft=true; //first trash.. 
 
   
       var cont_combo = 0;//counts the no missing strike
@@ -142,8 +142,8 @@ $(function() {
             ft=false;
           }
           
-        document.getElementById("myoutput").innerHTML = "Game Wight: "+ container_width + " RB1:<i>"+recycle_bins_container.dumpsters[0].rb_coordinates + "</i> RB2:<i>"+recycle_bins_container.dumpsters[1].rb_coordinates + "</i> RB3:<i>"+recycle_bins_container.dumpsters[2].rb_coordinates + "</i> RB4:<i>"+recycle_bins_container.dumpsters[3].rb_coordinates+"</i>";
-        document.getElementById("myoutput2").innerHTML = "Bottom: "+ trash_current_bottom +" Top: "+ trash_current_top +" Left: "+ trash_current_left + " Speed: "+speed +" CL: "+laneTracker+" RBH: "+rb_area_height;
+        document.getElementById("myoutput").innerHTML = "GW: "+ container_width + " RB1:<i>"+recycle_bins_container.dumpsters[0].rb_coordinates + "</i> RB2:<i>"+recycle_bins_container.dumpsters[1].rb_coordinates + "</i> RB3:<i>"+recycle_bins_container.dumpsters[2].rb_coordinates + "</i> RB4:<i>"+recycle_bins_container.dumpsters[3].rb_coordinates+"</i>";
+        document.getElementById("myoutput2").innerHTML = "L: "+ trash_current_left + " Speed: "+speed +" CL: "+laneTracker+" RBH: "+rb_area_height +" RBW:"+ $("#image-rb-1").width() +" B: "+ trash_current_bottom +" T: "+ trash_current_top;
         
         //635 this is near the RB 
         if (parseInt(trashy.css('top'))>=container_height){ 
@@ -175,46 +175,30 @@ $(function() {
       return randomLaneMax;
       //returns a random value for the next lane 
     }
-
-    $( window ).resize(function() {
-      //flexLanes();
-    });
-
-    //v2. this function will generate the lanes of the trash via an operation. this also will fill up a global object with the game coordinates
           
     function flexLanes (){
-      //alert ("size changed to: "+$( window ).width());
-      //alert("entro al metodo "+rb1_position);
-
-      /*$('img', '#wrapper-table-rb').each(function () {
-        alert("this= "+$(this).css('left')); //this is returns auto therefor doesn't work for what I need. I needed the coordinates of the RB to match them with the trash 
-      });*/
+      //this method sets the new coordinates on the JSON of the RB.. TODO: move right and left according these values.
+       //v2. this function will generate the lanes of the trash via an operation. this also will fill up a global object with the game coordinates
       var cont_RB=0;
       $('div', '#wrapper-table-rb').each(function () {
-        //counts the amount of divs, each div is a RB.
         cont_RB+=1;//0,1,2,3
       });
-      
-      var win_width = $( window ).width();
-      var lane_size = container_width/cont_RB;//100
-      var centered_lane = Math.floor((container_width/cont_RB+(lane_size*0.25)));//25
-
+      var lane_size = container_width/cont_RB;//200
+      var lane_half = lane_size/2;
+      var rb_width = $("#image-rb-1").width()*0.75;
+      $("#trash_1").width(rb_width);
+      $("#trash_1").height(rb_width);
       for (i = 0; i < cont_RB; i++) {
         if(i==0){
-          recycle_bins_container.dumpsters[i].rb_coordinates = lane_size*0.25;//25
+          var temp= lane_half-($("#trash_1").width()/2);//esta bien
+          console.log("lane 1:"+temp);
+          recycle_bins_container.dumpsters[i].rb_coordinates = lane_half-($("#trash_1").width()/2);//70
           //alert(i+" New Coordinates "+ recycle_bins_container.dumpsters[i].rb_coordinates);
         }else{
-          recycle_bins_container.dumpsters[i].rb_coordinates = (lane_size*i)+lane_size*0.25;
+          recycle_bins_container.dumpsters[i].rb_coordinates = (lane_size*i)+(lane_half-($("#trash_1").width()/2));
           //alert(i+" New Coordinates "+ recycle_bins_container.dumpsters[i].rb_coordinates);
         }  
-        //this set the new coodinates on the JSON of the RB.. TODO: move right and left according these values.
-        //toRight
-        //toLeft
-        //newLane
       }
-      
-      //alert("carriles: "+cont_RB + " tamanho pantalla: " + win_width);
-      
     }
 
     function setGameDimension(){
@@ -356,7 +340,7 @@ $(function() {
         setReducePoints ( max_points - (trash_info_speed * 100));
         $( "#image-rb-"+(laneTracker+1) ).effect( "shake", {times:3}, "down", 420); //this will shake the wrong RB
     }
-
+    
     playerscorehtml.text(parseInt(playerscore));
   }
 

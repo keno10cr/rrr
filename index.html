@@ -6,14 +6,14 @@
         <title class="MMM--bodyCopy">RRR</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css"> <!--https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css--> 
+        <link rel="stylesheet" href="css/jquery-ui.css"> <!--//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css-->
         <link rel="stylesheet" href="css/styles.css">
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
-        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/jquery.min.js"> </script> <!--https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js-->
+        <script src="js/jquery-1.12.4.js"></script><!--//code.jquery.com/jquery-1.12.4.js-->
+        <script src="js/jquery-ui.js"></script><!--//code.jquery.com/ui/1.12.1/jquery-ui.js-->
+        <script src="js/bootstrap.min.js"></script><!--https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js-->
         <script src="js/game.js"></script>
         
         
@@ -24,131 +24,59 @@
             <!--Arreglar Navigation-->
             <!--http://getbootstrap.com/docs/3.3/examples/navbar-static-top/-->
             <nav class="navbar navbar-default navbar-static-top RRR-nav">
-                    <div class="container">
-                      <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">RRR</a>
-                      </div>
-                      <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-                        <ul class="nav navbar-nav">
-                          <li class="active"><a href="index.html">Recycle</a></li>
-                          <li><a href="fun-facts.html">Fun Facts</a></li>
-                          <li><a href="#contact">About</a></li>
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                              <li><a href="#">Tutorial</a></li>
-                              <li><a href="#">Settings</a></li>
-                              <li><a href="#">Contact</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li class="dropdown-header">High Scores</li>
-                              <li><a href="#">Login</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                          <li><img class="logo" src="images/3_M_RRR_SM_top_right.png"></li>
-                        </ul>
-                      </div><!--/.nav-collapse -->
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img class="logo" src="images/3_M_RRR_SM_top_right.png"></a>
+                  </div>
+                  <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                    <ul class="nav navbar-nav">
+                      <li><a href="fun-facts.html">Why Recycle?</a></li>
+                      <li><a href="fun-facts.html">How To?</a></li>
+                      <li><a href="rrr-game.html">Recycle!</a></li>
+                      <li><a href="high-scores.html">High Scores</a></li>
+                    </ul>
+                  </div><!--/.nav-collapse -->
+                </div>
+              </nav>
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <h1>Reuse, Reduce, Recycle!</h1> 
+                        <p>Sed eget nisl sapien. Fusce in nisi non nisi consequat eleifend. Vivamus tincidunt arcu sed interdum gravida. Maecenas accumsan eget enim quis rhoncus. Ut imperdiet lacus ultrices orci ultrices elementum. Etiam et efficitur arcu, vel cursus dui. Nam dictum tortor quis dolor bibendum, et sodales ligula condimentum. Ut sodales varius fermentum. Aliquam erat volutpat. Mauris dictum rhoncus eros sed placerat.</p>
                     </div>
-                  </nav>
-
-
-            <div class="container-fluid game">
-                <div class="row"><!--Game Row-->
-                   <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 "><!--8-->
-                        <div id="game-div">
-                            <div id="main_results_div">
-                                <div class="stage"> <!-- Tag for the game over title!-->
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                  <div class="layer"></div>
-                                </div>
-                                <div id="results_div" style="">
-                                    <p id="results_score">Score:</p>
-                                    <a href="#" class="button blue" id="reset_button">Restart</a>
-                                </div>
-                            </div>
-                            <div id="wrapper-table-header">
-                                <div id="left-game-header">
-                                    <div id="playerscore">0</div>
-                                    <div id="scorecontainer"><img id="imgscore"><img id="imgCombo"></div>
-                                </div>
-                                <div id="mid-game-header">
-                                    <img id="guide_3" class="visual_guide" src="">
-                                    <img id="guide_2" class="visual_guide" src="">
-                                    <img id="guide_1" class="visual_guide" src="">
-                                </div>
-                                <div id="right-game-header">
-                                    <div class="timeContainer"><img id="extraTimeImage" src=""></div>
-                                    <label id="time">2:00</label> 
-                                </div>
-                            </div>
-                        
-                            <div id="trash_1" class="trashItem"></div>
-                            <div id="trash_lids"></div><!-- div necesario para crear las tapas dinamicamente con el javascript !-->
-                            <div id="game-rb-area" style="z-index: 2">
-                                <div id="wrapper-table-rb">
-                                        <div id="rb1" class=rb-lane>
-                                            <img id="image-rb-1" class="game-rb" src="images/01_verde.png">
-                                        </div>
-                                        <div id="rb2" class=rb-lane>
-                                            <img id="image-rb-2" class="game-rb" src="images/02_azul.png">
-                                        </div>
-                                        <div id="rb3" class=rb-lane>
-                                            <img id="image-rb-3" class="game-rb" src="images/03_amarillo.png">
-                                        </div>
-                                        <div id="rb4" class=rb-lane>
-                                            <img id="image-rb-4" class="game-rb" src="images/04_gris.png">
-                                        </div>
-                                </div>
-                            </div>
-                            <!--I should improve the code to add the trash cans via js via 36.>  var max_lane = 4;-->
-                        </div>
-                   </div><!--8-->
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"><!--4-->
-                        <h1>Temp Console</h1>
-                        <div class="fun-fact-div"><div id="minioutput">
-                                <span id="myoutput"></span>
-                                <hr/>
-                                <span id="myoutput2"></span>
-                                <hr/>
-                                <span id="myoutput3"></span>
-                                <hr/>
-                                <span id="myoutput4"></span>
-                                <hr/>
-                                <span id="myoutput5"></span>
-                            </div></div>
-                        <div class="fun-fact-div"><h1>Facts 2</h1></div>
-                        <div class="fun-fact-div"><h1>Facts 3</h1></div>
-                    </div><!--4-->
+                </div>
+                <div class="row my-landing"><!--My Landing-->
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block">Why Recycle</button>
+                        <p>Fusce in nisi non nisi consequat eleifend. Vivamus tincidunt arcu sed interdum gravida.</p>
+                        <img src="images/bg/bg1.png" class="img-responsive" alt="Landing 1">
+                        <p>Aenean posuere congue eros et mollis. Sed mi turpis, eleifend vitae aliquet ut, blandit ac risus. Nulla vitae ex lectus.</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block">Tutorial</button>
+                        <p>Fusce in nisi non nisi consequat eleifend. Vivamus tincidunt arcu sed interdum gravida.</p>
+                        <img src="images/bg/bg2.png" class="img-responsive" alt="Landing 2">
+                        <p>Morbi accumsan diam eros, lacinia scelerisque arcu cursus ac. Cras gravida vestibulum scelerisque. Nunc rutrum nibh efficitur augue dignissim, dapibus accumsan metus interdum.</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <button type="button" class="btn btn-primary btn-lg btn-block">Play!</button>
+                        <p>Fusce in nisi non nisi consequat eleifend. Vivamus tincidunt arcu sed interdum gravida.</p>
+                        <img src="images/bg/bg3.png" class="img-responsive" alt="Landing 3">
+                        <p>Maecenas accumsan eget enim quis rhoncus. Ut imperdiet lacus ultrices orci ultrices elementum. Etiam et efficitur arcu, vel cursus dui. Nam dictum tortor quis dolor bibendum, et sodales ligula condimentum.</p>
+                    </div>
                 </div><!--End Game Row-->
             </div>
         </div>
         <footer class="footer">
-            <a href="#">3m.com/recycle</a>
+            <a href="index.html">3m.com/recycle</a>
         </footer>
     </body>
     

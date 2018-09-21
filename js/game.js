@@ -72,10 +72,10 @@ $(function() {
   
       var recycle_bins_container = {
         "dumpsters": [
-          { "name":"Green", "status":false, "rb_lane":1, "space": max_trash, "rb_coordinates":"0" },
-          { "name":"Blue", "status":false, "rb_lane":2, "space": max_trash, "rb_coordinates":"0" },
-          { "name":"Yellow", "status":false, "rb_lane":3, "space": max_trash, "rb_coordinates":"0" },
-          { "name":"Gray", "status":false, "rb_lane":4, "space": max_trash, "rb_coordinates":"0" },
+          { "name":"Green", "status":false, "rb_lane":1, "space": max_trash, "rb_coordinates":"0", nImage: 'images/01_verde.png', fImage: 'images/01_verde-f.png'},
+          { "name":"Blue", "status":false, "rb_lane":2, "space": max_trash, "rb_coordinates":"0", nImage: 'images/02_azul.png', fImage: 'images/02_azul-f.png'},
+          { "name":"Yellow", "status":false, "rb_lane":3, "space": max_trash, "rb_coordinates":"0", nImage: 'images/03_amarillo.png', fImage: 'images/03_amarillo-f.png'},
+          { "name":"Gray", "status":false, "rb_lane":4, "space": max_trash, "rb_coordinates":"0", nImage: 'images/04_gris.png', fImage: 'images/04_gris-f.png'},
           { "name":"Black", "status":false, "rb_lane":5, "space": max_trash, "rb_coordinates":"0" },
           { "name":"Red", "status":false, "rb_lane":6, "space": max_trash, "rb_coordinates":"0" },
           { "name":"Orange", "status":false, "rb_lane":7, "space": max_trash, "rb_coordinates":"0" },
@@ -94,7 +94,6 @@ $(function() {
       var trash_info_status = true; //if it needs change or not
   
       //This is like an init to set up the initial values of the visual aid.      
-      setLidsHTML();
       addRandomTrash();
       addRandomTrash();
       addRandomTrash();
@@ -110,8 +109,7 @@ $(function() {
     
       //-------------------------------------------//Change the lane of the trash//-------------------------------------------//
     
-    anim_id = requestAnimationFrame(repeat);
-    initTimer();
+    gameInitCountDown();
 
 
     /*MOTOR!!!*/
@@ -191,7 +189,7 @@ $(function() {
       for (i = 0; i < cont_RB; i++) {
         if(i==0){
           var temp= lane_half-($("#trash_1").width()/2);//esta bien
-          console.log("lane 1:"+temp);
+          //console.log("lane 1:"+temp); annoying
           recycle_bins_container.dumpsters[i].rb_coordinates = lane_half-($("#trash_1").width()/2);//70
           //alert(i+" New Coordinates "+ recycle_bins_container.dumpsters[i].rb_coordinates);
         }else{
@@ -474,70 +472,53 @@ function is_full_bin(bin_index){
 }
 
 function putLid(index){
-    var laneSize = Math.floor(container_width/max_lane);
-    var lid_html = $('#recycle_full_' + index);
-    lid_html.css('left',laneSize * index + 2);//center full RB here, or replace //check with Adrian.
-    lid_html.css('bottom', 7);
-    lid_html.css('position', 'absolute');
-    lid_html.css('z-index', 9);
-    lid_html.css('visibility', 'visible');
+	$('#image-rb-' + (index + 1)).attr('src',recycle_bins_container.dumpsters[index].fImage);
   }
 
 function takeLid(index){    
-  var elements = {
-    lid  : $("#recycle_full_"+ index), // get element to fly
-    timer : $('#time') // get destination
-  };
+	var elements = {
+		lid  : $("#image-rb-"+ (index + 1)), // get element to fly
+		timer : $('#time') // get destination
+	};
 
-  var options = {
-    position : {
-      origin: {
-          // get initial position on document
-        initial: elements.lid.offset(),
-          // amout of pixels to move the cloned element from the original before moving to timer
-        offset: { x: 5, y: 15 }
-      },
-      destination: {
-          // get initial position on document
-        initial: elements.timer.offset()
-      }
-    }
-  };
-  
-  var cloneLid = elements.lid.clone();
-  cloneLid.attr("src", trash_bag);
-  //alert("Cloned: "+cloneLid);  //meterle la imagen nueva de la basura aqui!
-  cloneLid.appendTo('body').css('position','absolute').css('top',options.position.origin.initial.top)
-    .css('left',options.position.origin.initial.left);
+	var options = {
+		position : {
+			origin: {
+				// get initial position on document
+				initial: elements.lid.offset(),
+				// amout of pixels to move the cloned element from the original before moving to timer
+				offset: { x: 5, y: 15 }
+			},
+			destination: {
+				// get initial position on document
+				initial: elements.timer.offset()
+			}
+		}
+	};
 
-  
-  elements.lid.css('visibility', 'hidden');
-  
- cloneLid.animate(
-      { top: options.position.origin.initial.top - options.position.origin.offset.y, left: options.position.origin.initial.left - options.position.origin.offset.x }, 400,
-      function(){
-        cloneLid.delay(100).animate(
-          { top: options.position.destination.initial.top, left: options.position.destination.initial.left, width: '20px', height: '20px' }, 750, null,
-          function(){
-            cloneLid.fadeOut(500, function(){
-              elements.timer.effect( "bounce", "slow" );
-            });
-          }
-        );
-      }
-    );
+	elements.lid.attr('src',recycle_bins_container.dumpsters[index].nImage);
+
+	var cloneLid = elements.lid.clone();
+	cloneLid.css('height', elements.lid.height()).css('width', elements.lid.width());
+	cloneLid.attr("src", trash_bag);
+	//alert("Cloned: "+cloneLid);  //meterle la imagen nueva de la basura aqui!
+	cloneLid.appendTo('body').css('position','absolute').css('top',options.position.origin.initial.top)
+		.css('left',options.position.origin.initial.left).css('z-index', 4);
+
+
+	cloneLid.animate(
+		{ top: options.position.origin.initial.top - options.position.origin.offset.y, left: options.position.origin.initial.left - options.position.origin.offset.x }, 400,
+			function(){
+				cloneLid.delay(100).animate(
+					{ top: options.position.destination.initial.top, left: options.position.destination.initial.left, width: '20px', height: '20px' }, 750, null,
+						function(){
+							cloneLid.fadeOut(500, function(){
+								elements.timer.effect( "bounce", "slow" );
+							});
+						});
+					});
   
 }
-
- function setLidsHTML(){
-  var trash_lids = $('#trash_lids');
-  var innerHTML = "";
-  for(var i = 0; i < max_lane; i++){
-    innerHTML+= '<img id="recycle_full_'+i+'" src="images/basura_llena.png" class="fullTrash">';
-  }
-  trash_lids.html(innerHTML);
-}
-  
 
 //Combo Functionalities
   function incCombo(){
@@ -563,6 +544,7 @@ function takeLid(index){
 
   function restartGame(){ // needs refinement
       playerscore = 0;
+      trash.css('top', -100);
       for(var i = 0; i < max_lane; i ++){
         recycle_bins_container.dumpsters[i].space = max_trash;
         $('#recycle_full_'+i).css('visibility', 'hidden');
@@ -574,11 +556,30 @@ function takeLid(index){
       addRandomTrash();
       reAssignHelp();
       nextTrash();    
-      anim_id = requestAnimationFrame(repeat);
-      initTimer();
+      gameInitCountDown();
       $('#results_score').html("Score: ");
 
     }
+
+    function gameInitCountDown(){
+    	var counter = $('#startCounter');
+    	counter.html('3');
+    	counter.css('visibility', 'visible');
+    	setTimeout(function(){
+    		counter.html('2');
+    		setTimeout(function(){
+    			counter.html('1');
+    			setTimeout(function(){
+    				counter.html('0');
+    				anim_id = requestAnimationFrame(repeat);
+      				initTimer();
+      				counter.css('visibility', 'hidden');
+    			}, 1000)
+    		},1000)
+    	},1000)
+    }
+
+
   
   }); //end main function
   

@@ -216,7 +216,7 @@ bottom: 0;
 }
 
 
-#playerscore, #time{
+#playerscore, #time, #startCounter{
 /*
 -webkit-text-stroke: 3px black;
  */
@@ -310,6 +310,12 @@ div#trash_1 {
   padding-right: 33%;
   position: absolute; 
   z-index:11;
+}
+
+#startCounter {
+    position: absolute;
+    top: 50%;
+    left:50%;
 }
 
 

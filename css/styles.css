@@ -30,9 +30,13 @@ h1,h2,h3,h4{
     border-top-style: solid;
 }
 
+.fun-fact-div img {
+  max-height: 310px;
+  margin: 0 auto;
+}
+
 body { 
   
-  /*background-image: url('https://www.3m.com/3m_theme_assets/themes/3MTheme/assets/images/unicorn/repeating_meshed_grid.png');*/
   background-image: url('../images/pattern_white.png');
   
   background-size: 100% 100%;
@@ -96,12 +100,13 @@ body {
   bottom: 0;
   left: 0;
   text-align: center;
-  background-color: #0066ff;
+  background-color: #ffffff;
   height: 50px;
   padding-top: 15px;
   font-weight: bold;
-  border-bottom: 7px solid;
-  border-color: yellow;
+  border-top: 7px solid;
+  border-color: #16b316;
+  border-style: solid none none none;
 }
 /*
 Only needed when everything was empty?
@@ -111,12 +116,12 @@ Only needed when everything was empty?
 }
 
 .logo {
-  height: 42px;
-  padding-top: 10px;
-  padding-bottom: 8px;
-  padding-left: 0%;
-  float: right;
-  padding-right: 10%;
+  height: 21px;
+  /* padding-top: 10px; */
+  /* padding-bottom: 8px; */
+  /* padding-left: 0%; */
+  /* float: right; */
+  /* padding-right: 10%; */
 }
 
 .navbar .navbar-nav {
@@ -139,15 +144,57 @@ ul {
   opacity: 0.7;
 }
 
+.landing-ops img {
+  max-height: 210px;
+  margin: 0 auto;
+}
+
 /******************** Why Recycle? ********************/
+.mymainff h2 {
+  border-bottom-style: solid;
+  border-bottom-color: red;
+  border-bottom-width: 7px;
+}
+
+.mysecff h3 {
+  border-bottom-style: solid;
+  border-bottom-color: #0066ff;
+  border-bottom-width: 4px;
+}
 
 /******************** How To Page ********************/
 
 .howto .row {
-  margin-bottom: 70px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  /*border-bottom-style: solid;
+  border-bottom-width: 7px;
+  border-bottom-color: #ea0403;*/
+}
+
+.myhowto h2 {
+  border-bottom: 7px red solid;
+}
+
+.myhowto button {
+  margin: 13px;
 }
 
 /******************** High Scores? ********************/
+
+.ourscores h2 {
+  border-bottom: 7px red solid;
+}
+
+/******************** Tutorial ********************/
+.tutorial img {
+  margin: 0 auto;
+  max-height: 420px;
+}
+
+p.img-desc {
+  text-align: center;
+}
 
 /******************** From CodePen ********************/
 
@@ -185,6 +232,8 @@ span#myoutput i {
   background-image: url('../images/game_bg_1.png');
   overflow: hidden;
   background-size:100% 100%;
+  border-style: solid;
+  border-width: 7px;
   
 }
 
@@ -371,7 +420,7 @@ body {
   min-height: 450px;
   height: 100vh;
   margin: 0;
-  background: radial-gradient(circle, darken(dodgerblue, 10%), #1f4f96, #1b2949, #000);
+  /*background: radial-gradient(circle, darken(dodgerblue, 10%), #1f4f96, #1b2949, #000);*/
 }
 
 .stage {

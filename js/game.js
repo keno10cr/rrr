@@ -140,8 +140,9 @@ $(function() {
             ft=false;
           }
           
-        document.getElementById("myoutput").innerHTML = "GW: "+ container_width + " RB1:<i>"+recycle_bins_container.dumpsters[0].rb_coordinates + "</i> RB2:<i>"+recycle_bins_container.dumpsters[1].rb_coordinates + "</i> RB3:<i>"+recycle_bins_container.dumpsters[2].rb_coordinates + "</i> RB4:<i>"+recycle_bins_container.dumpsters[3].rb_coordinates+"</i>";
-        document.getElementById("myoutput2").innerHTML = "L: "+ trash_current_left + " Speed: "+speed +" CL: "+laneTracker+" RBH: "+rb_area_height +" RBW:"+ $("#image-rb-1").width() +" B: "+ trash_current_bottom +" T: "+ trash_current_top;
+           
+        //document.getElementById("myoutput").innerHTML = "GW: "+ container_width + " RB1:<i>"+recycle_bins_container.dumpsters[0].rb_coordinates + "</i> RB2:<i>"+recycle_bins_container.dumpsters[1].rb_coordinates + "</i> RB3:<i>"+recycle_bins_container.dumpsters[2].rb_coordinates + "</i> RB4:<i>"+recycle_bins_container.dumpsters[3].rb_coordinates+"</i>";
+        //document.getElementById("myoutput2").innerHTML = "L: "+ trash_current_left + " Speed: "+speed +" CL: "+laneTracker+" RBH: "+rb_area_height +" RBW:"+ $("#image-rb-1").width() +" B: "+ trash_current_bottom +" T: "+ trash_current_top;
         
         //635 this is near the RB 
         if (parseInt(trashy.css('top'))>=container_height){ 
@@ -222,7 +223,10 @@ $(function() {
         //document.getElementById("trash_1").width = "66";
         //document.getElementById("trash_1").height = "66";
         document.getElementById("trash_1").style.backgroundImage = "url('"+trash_info_url+"')";
-        document.getElementById("myoutput4").innerHTML = "T: " + trash_info_name +" Speed: "+ trash_info_speed +" CL:  "+ trash_info_cl;
+        
+        //to display data on the temp console.
+        //document.getElementById("myoutput4").innerHTML = "T: " + trash_info_name +" Speed: "+ trash_info_speed +" CL:  "+ trash_info_cl;
+        
       
         reAssignHelp()
     }
@@ -275,7 +279,9 @@ $(function() {
         default:
          text = "Somethings is wrong";
     } // close switch keydown
-    document.getElementById("myoutput3").innerHTML = "Desktop : "+ text;
+    
+     //to display data on the temp console.
+    //document.getElementById("myoutput3").innerHTML = "Desktop : "+ text;
   
   });
 
@@ -455,7 +461,7 @@ function empty_trash(){
   for(var i = 0; i < recycle_bins_container.dumpsters.length; i++){
     if(is_full_bin(i)){
       takeLid(i);
-      time_to_add.push(15);
+      time_to_add.push(5);
       recycle_bins_container.dumpsters[i].space = max_trash;
       trash_emptied = true;
     }
@@ -532,7 +538,9 @@ function takeLid(index){
         imgCombo.attr('src', comboUrls[cont_multiplicador-2]); //the -2 its because at cont_mult at 2 that will mean to display the img from comboUrls at position 0.
         
     }
-    document.getElementById("myoutput5").innerHTML = "Current Strike: "+cont_combo;
+    
+    //to display data on the temp console.
+    //document.getElementById("myoutput5").innerHTML = "Current Strike: "+cont_combo;
   }
 
   function resetCombo(){

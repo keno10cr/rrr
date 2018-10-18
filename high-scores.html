@@ -14,7 +14,6 @@
         <script src="js/jquery-1.12.4.js"></script><!--//code.jquery.com/jquery-1.12.4.js-->
         <script src="js/jquery-ui.js"></script><!--//code.jquery.com/ui/1.12.1/jquery-ui.js-->
         <script src="js/bootstrap.min.js"></script><!--https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js-->
-        <script src="js/game.js"></script>
         
         
     </head>
@@ -24,7 +23,7 @@
             <!--Arreglar Navigation-->
             <!--http://getbootstrap.com/docs/3.3/examples/navbar-static-top/-->
             <nav class="navbar navbar-default navbar-static-top RRR-nav">
-              <div class="container-fluid">
+              <div class="container">
                 <div class="navbar-header">
                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
@@ -32,7 +31,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="index.html"><img class="logo" src="images/3_M_RRR_SM_top_right.png"></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                   <ul class="nav navbar-nav">
@@ -40,6 +38,7 @@
                     <li><a href="how-to">How To?</a></li>
                     <li><a href="rrr-game.html">Recycle!</a></li>
                     <li class="active"><a href="high-scores.html">High Scores</a></li>
+                    <li><a href="tutorial.html">Tutorial</a></li>
                   </ul>
                 </div><!--/.nav-collapse -->
               </div>
@@ -48,32 +47,66 @@
 
             <div class="container myhs">
               <div class="row"><!--Main Fun Facts-->
-                <div class="col-12 text-center"> 
-                    <h1>High Scores</h1>
+                <div class="col-12"> 
+                    <h1>3M Scores</h1>
                     
                     <p>Vivamus at libero lacus. Phasellus dignissim eget ante in pretium. Sed facilisis lacinia elit sit amet finibus. Aenean posuere congue eros et mollis. Sed mi turpis, eleifend vitae aliquet ut, blandit ac risus.</p>
                 </div>
-                <div class="col-md-12">
-                    <table class="table table-hover table-condensed"> 
-                      <thead> 
-                        <tr> <th>#</th> <th>First Name</th> <th>Last Name</th> <th>Username</th> </tr> 
-                      </thead> 
-                      <tbody> 
-                        <tr> <th scope="row">1</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> </tr> 
-                        <tr> <th scope="row">2</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> </tr> 
-                        <tr> <th scope="row">1</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> </tr> 
-                        <tr> <th scope="row">2</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> </tr> 
-                      </tbody> 
-                    </table>
-                </div>
-                <div class="col-12 text-center"> 
+              </div>
+              <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 highscore ourscores">
+                      <table class="table table-hover table-condensed"> 
+                        <h2>High Score</h2>
+                        <thead> 
+                          <tr> <th>#</th> <th>Name</th> <th>Points</th> <th>UDID</th> </tr> 
+                        </thead> 
+                        <tbody> 
+                          <tr> <th scope="row">1</th> <td>Keiner</td> <td>23300</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">2</th> <td>Kevin</td> <td>22400</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">3</th> <td>Adrian</td> <td>21500</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">4</th> <td>Gustavo</td> <td>19800</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">5</th> <td>Jose</td> <td>17500</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">6</th> <td>Miguel</td> <td>17400</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">7</th> <td>Laura</td> <td>15000</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">8</th> <td>Maureen</td> <td>12200</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">9</th> <td>Marcela</td> <td>11000</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">10</th> <td>Melissa</td> <td>10500</td> <td>UDI###</td> </tr> 
+                        </tbody> 
+                      </table>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 toprecolector ourscores">
+                      <table class="table table-hover table-condensed"> 
+                        <h2>Top Recolector</h2>
+                        <thead> 
+                          <tr> <th>#</th> <th>Name</th> <th>Points</th> <th>UDID</th> </tr> 
+                        </thead> 
+                        <tbody> 
+                          <tr> <th scope="row">1</th> <td>Keiner</td> <td>23300</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">2</th> <td>Kevin</td> <td>22400</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">3</th> <td>Adrian</td> <td>21500</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">4</th> <td>Gustavo</td> <td>19800</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">5</th> <td>Jose</td> <td>17500</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">6</th> <td>Miguel</td> <td>17400</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">7</th> <td>Laura</td> <td>15000</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">8</th> <td>Maureen</td> <td>12200</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">9</th> <td>Marcela</td> <td>11000</td> <td>UDI###</td> </tr> 
+                          <tr> <th scope="row">10</th> <td>Melissa</td> <td>10500</td> <td>UDI###</td> </tr> 
+                        </tbody> 
+                      </table>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-12"> 
                     <p>Donec eleifend, erat sit amet tincidunt faucibus, tortor justo molestie purus, id ornare ipsum nisl sed erat. Nunc non est id erat sagittis dapibus. Sed consectetur turpis vel quam eleifend, sit amet efficitur massa aliquet. Proin sit amet tristique metus. Vivamus ultricies in erat eu sollicitudin. Duis et magna non massa volutpat sollicitudin. Nunc in fringilla dolor. Vivamus at libero lacus. Phasellus dignissim eget ante in pretium. Sed facilisis lacinia elit sit amet finibus. Aenean posuere congue eros et mollis. Sed mi turpis, eleifend vitae aliquet ut, blandit ac risus. Nulla vitae ex lectus. Morbi sit amet tortor eget mi viverra rutrum quis id est. Curabitur quis ultricies nunc. Ut ante diam, tempor sit amet malesuada sed, cursus quis erat.</p>
                 </div>
               </div><!--End Fun Facts-->
             </div>
         </div>
         <footer class="footer">
-          <a href="index.html">3m.com/recycle</a>
+          <a href="index.html"><img class="logo" src="images/3_M_RRR_SM_top_right.png"></a>
       </footer>
     </body>
     

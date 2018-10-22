@@ -397,8 +397,8 @@ $(function() {
 
 //Time Functions
 function initTimer(){
-  timeDate.setSeconds(0);
-  timeDate.setMinutes(1);
+  timeDate.setSeconds(1);
+  timeDate.setMinutes(0);
   //timer.html(timeDate.toLocaleTimeString('it-IT').replace(/\u200E/g,"").substring(3,8));
   timer.html(timeDate.toLocaleTimeString('it-IT').substring(3,8));//is this the IE fix?
   setTimeout(decTime, 1000);
@@ -443,6 +443,8 @@ function stop_the_game() {
 
     var results_score = $('#results_score').html() + playerscore;
     $('#results_score').html(results_score);
+
+    getPlayer();
 
     //restart_div.slideDown();
     //restart_btn.focus();
@@ -596,3 +598,78 @@ function takeLid(index){
   //REF
   //jQueryAnimate //https://www.w3schools.com/jquery/jquery_animate.asp
   //Json Arrays //https://www.w3schools.com/js/js_json_arrays.asp
+
+
+function getPlayer(){
+	var test = "A8RZYZZ3";
+	const http = new XMLHttpRequest();
+	const url='http://localhost:3001/getUser/A8RZYZZ3';
+	http.open("GET", url);
+	http.send();
+	http.onreadystatechange= function(){
+		if(http.readyState === XMLHttpRequest.DONE && http.status === 200) {
+			var jsonResponse = JSON.parse(http.responseText);
+			if(!jsonResponse.length){
+				console.log("add new player");
+				insertPlayer();
+			} else {
+				var player = jsonResponse[0];
+				if(player.high_score < playerscore){
+					player.high_score = playerscore;
+				}
+
+				player.total_trash = player.total_trash + 10 // aqui seria el acumulado de trash correct?
+
+				//updatePlayer
+				//load highscores
+			}
+	  	}
+	}
+}
+
+
+function insertPlayer(){
+	var params = 'u_id='+'A8RZYZZ4'+'&high_score='+236+'&total_trash='+20; // aqui seria el acumulado de trash correct?
+	console.log(params);
+	const http = new XMLHttpRequest();
+	const url='http://localhost:3001/createUser';
+	http.open("POST", url, true);
+	http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	http.send(params);
+	http.onreadystatechange= function(){
+		if(http.readyState === XMLHttpRequest.DONE && http.status === 200) {
+			console.log(http.responseText);
+	  	}
+	}
+
+}
+
+function updatePlayer(){
+    var params = 'u_id='+'A8RZYZZ4'+'&high_score='+236+'&total_trash='+20; // aqui seria el acumulado de trash correct?
+    console.log(params);
+    const http = new XMLHttpRequest();
+    const url='http://localhost:3001/updateUser';
+    http.open("POST", url, true);
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    http.send(params);
+    http.onreadystatechange= function(){
+        if(http.readyState === XMLHttpRequest.DONE && http.status === 200) {
+            console.log(http.responseText);
+        }
+    }
+
+}
+
+function getHighScores(){
+    const http = new XMLHttpRequest();
+    const url='http://localhost:3001/getHghscores?amount=' + 10; // valor alambrado, se puede cambiar
+    http.open("GET", url, true);
+    http.send(params);
+    http.onreadystatechange= function(){
+        if(http.readyState === XMLHttpRequest.DONE && http.status === 200) {
+            var jsonResponse = JSON.parse(http.responseText);
+            // loopear en el array de highscores, vienen en orden
+        }
+    }
+}
+

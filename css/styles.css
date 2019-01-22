@@ -38,9 +38,9 @@ h1,h2,h3,h4{
 body { 
   
   background-image: url('../images/pattern_white.png');
-  
-  background-size: 100% 100%;
-  height: 100%;
+  background-size: contain;
+  font-size: 16px;
+  /*background-size: 100% 100%;*/
 }
 
 
@@ -73,6 +73,12 @@ body {
 /******************** End Game Header Section ********************/
 
 /******************** Starts Game Recycle Bins Section ********************/
+
+.myresults span {
+  color: #fff;
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 #wrapper-table-rb{
   display: table; 
   width: 100%
@@ -89,6 +95,8 @@ body {
   min-width: 50px;
   position: relative;
 }
+
+
 /******************** End Game Recycle Bins Section ********************/
 
 .footer a {
@@ -101,7 +109,7 @@ body {
   left: 0;
   text-align: center;
   background-color: #ffffff;
-  height: 50px;
+  height: 100px;
   padding-top: 15px;
   font-weight: bold;
   border-top: 7px solid;
@@ -113,20 +121,30 @@ Only needed when everything was empty?
 */
 .content {
   min-height: calc(100vh - 50px);
+ /* min-height: calc(93vh - 50px);*/
 }
 
 .logo {
-  height: 21px;
-  /* padding-top: 10px; */
-  /* padding-bottom: 8px; */
-  /* padding-left: 0%; */
-  /* float: right; */
-  /* padding-right: 10%; */
+  height: 70px;
+}
+
+p#total_games {
+  color: #ffff00;
+  font-family: '3MCircularFontBold', 'Jua', sans-serif;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-size: 30px;
+}
+
+.red-text {
+  color: red;
+  font-weight: bold;
 }
 
 .navbar .navbar-nav {
     display: inline-block;
     float: none;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .navbar-collapse {
@@ -134,14 +152,44 @@ Only needed when everything was empty?
 }
 
 ul { 
-  font-size: 20px;
-  font-weight: bold;
+  /*font-size: 20px;
+  font-weight: bold;*/
   
 }
 /******************** Landing Page********************/
 
-.my-landing img:hover {
+/*.my-landing img:hover {
   opacity: 0.7;
+}*/
+
+.main-landing img {
+  max-height: 510px;
+  margin: 0 auto;
+}
+
+.landing-ops img {
+  max-height: 210px;
+  margin: 0 auto;
+}
+
+.gamebtn {
+  background: #ffd000;
+  border-width: 3px;
+  border-color: #000;
+  border-radius: 0px;
+  margin: 20px 0;
+  font-size: 24px;
+  color: #000;
+  font-weight: bold;
+}
+
+.gamebtn:hover {
+  background: green;
+  border-color: #000;
+}
+
+.landing-ops a, .myhowto a {
+  text-decoration: none;
 }
 
 .landing-ops img {
@@ -162,6 +210,28 @@ ul {
   border-bottom-width: 4px;
 }
 
+h2.ff {
+  border-bottom-color: green;
+}
+
+p.source {
+  text-align: center;
+  font-size: 12px;
+}
+
+p.source a {
+  color: #7e7e7e;
+}
+
+.mysecff img {
+  padding-top: 20px;
+}
+
+.mymainff img {
+  width: 100%;
+  background: #00b13b;
+}
+
 /******************** How To Page ********************/
 
 .howto .row {
@@ -180,21 +250,189 @@ ul {
   margin: 13px;
 }
 
+.myhowtodesc img {
+  max-width: 120px;
+}
+
 /******************** High Scores? ********************/
 
 .ourscores h2 {
   border-bottom: 7px red solid;
+  text-align: center;
+}
+
+.morescores h3 {
+  border-bottom: 4px #555555 solid;
+  color: #555555;
+  text-align: center;
 }
 
 /******************** Tutorial ********************/
 .tutorial img {
   margin: 0 auto;
-  max-height: 420px;
+  /*max-height: 420px;*/
+  opacity: 0.8;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.tutorial img:hover {
+  transition: opacity 0.3s;
+  opacity: 1;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.tutorial img:not(:hover) {
+  transition: opacity 0.3s;
+  opacity: 0.8;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
 }
 
 p.img-desc {
   text-align: center;
 }
+
+.waste-guide ol {
+  list-style-position: inside;
+}
+
+/******************** Results Screen ********************/
+
+.myworst h4 {
+  color: #ff4a4a;
+}
+
+.mybest h4 {
+  color: #00c000;
+}
+
+.results-item {
+  width: 35%;
+  min-width: 60px;
+  margin: 0 auto;
+}
+
+span#results_score {
+  font-size: 38px !important;
+}
+
+.resultbtn {
+  background: #ffd000;
+  border-width: 3px;
+  border-color: #000;
+  border-radius: 0px;
+  margin: 20px 0;
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+  width: 70%;
+  margin: 0 auto;
+}
+
+#main_results_div {
+  background-color: #e7e7e7;
+  position: absolute;  
+  width: 100%;  
+  top: 0; 
+  left: 0; 
+  z-index: 10;
+  margin-bottom:900px;
+  display:none;
+  background-image: url('../images/game_bg_1.png');
+}
+
+#name_input_div {
+  position: absolute;  
+  width: 100%;
+  height: 100%;  
+  top: 0; 
+  left: 0; 
+  z-index: 10;
+  /*margin-bottom:900px;*/
+}
+
+.playerform{
+  text-align: center; 
+  vertical-align: middle;
+  margin-top: 11%;
+}
+
+.gray-bg{
+  background: #333333;
+}
+
+#results_div{
+  text-align: left; 
+  padding-top: 170px;
+  height: 100%; 
+  padding-left: 33%; 
+  padding-right: 33%;
+  position: absolute; 
+  z-index:11;
+}
+
+.myresults h2 {
+  /*
+  -webkit-text-stroke: 3px black;
+   */
+   font-size: 24px !important;
+  font-weight: 900;
+   color: #fff;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+  /*Text Stoke : https://css-tricks.com/adding-stroke-to-web-text/*/
+  }
+
+  .myresults h3 {
+    /*
+    -webkit-text-stroke: 3px black;
+     */
+     font-size: 26px !important;
+    font-weight: 900;
+     color: #fff;
+     text-shadow:
+         3px 3px 0 #000,
+       -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+         1px 1px 0 #000;
+    /*Text Stoke : https://css-tricks.com/adding-stroke-to-web-text/*/
+    }
+.mystats h4 {
+  /*
+  -webkit-text-stroke: 3px black;
+   */
+   font-size: 24px !important;
+  font-weight: 900;
+   color: #fff;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+  /*Text Stoke : https://css-tricks.com/adding-stroke-to-web-text/*/
+  }
+
+.mystats p, .mystats i{
+  /*
+  -webkit-text-stroke: 3px black;
+   */
+   font-size: 20px !important;
+  font-weight: 900;
+   color: #ffff00;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+  /*Text Stoke : https://css-tricks.com/adding-stroke-to-web-text/*/
+  }
+
 
 /******************** From CodePen ********************/
 
@@ -229,7 +467,7 @@ span#myoutput i {
   position: relative;
   width: 100%;
   height: 75vh;
-  background-image: url('../images/game_bg_1.png');
+  background-image: url('../images/coming-soon-home.JPG');
   overflow: hidden;
   background-size:100% 100%;
   border-style: solid;
@@ -265,7 +503,7 @@ bottom: 0;
 }
 
 
-#playerscore, #time, #startCounter{
+#playerscore, #time, #startCounter, #results_score{
 /*
 -webkit-text-stroke: 3px black;
  */
@@ -339,18 +577,22 @@ div#trash_1 {
   margin: 5px auto;
 }
 
-/*Results Page Styles*/
-#main_results_div {
-  background-color: #e7e7e7;
-  position: absolute;  
-  width: 100%;  
-  top: 0; 
-  left: 0; 
-  z-index: 10;
-  margin-bottom:900px;
-  display:none;
+#startCounter {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  font-size: 50px !important;
+  display: none;
+  
 }
 
+#inputName, #inputUID {
+  color: black;
+}
+
+
+/* Button css this can be changed*/
+/*
 #results_div{
   text-align: left; 
   padding-top: 170px;
@@ -360,16 +602,6 @@ div#trash_1 {
   position: absolute; 
   z-index:11;
 }
-
-#startCounter {
-    position: absolute;
-    top: 50%;
-    left:50%;
-}
-
-
-/* Button css this can be changed*/
-
 .button {
   display: inline-block;
   outline: none;
@@ -411,7 +643,7 @@ div#trash_1 {
 
 
 
-/*google font subsetting, see Heydon Pickering's: http://www.sitepoint.com/joy-of-subsets-web-fonts/*/
+//google font subsetting, see Heydon Pickering's: http://www.sitepoint.com/joy-of-subsets-web-fonts/
 @import url('//fonts.googleapis.com/css?family=Pacifico&text=Pure');
 @import url('//fonts.googleapis.com/css?family=Roboto:700&text=css');
 @import url('//fonts.googleapis.com/css?family=Kaushan+Script&text=!');
@@ -420,7 +652,7 @@ body {
   min-height: 450px;
   height: 100vh;
   margin: 0;
-  /*background: radial-gradient(circle, darken(dodgerblue, 10%), #1f4f96, #1b2949, #000);*/
+  //background: radial-gradient(circle, darken(dodgerblue, 10%), #1f4f96, #1b2949, #000);
 }
 
 .stage {
@@ -488,4 +720,43 @@ $NUM_LAYERS: 20;
 
 @keyframes ಠ_ಠ {
   100% { transform: rotateY(-40deg) rotateX(-43deg); }
+}
+
+*/
+
+/**
+*
+*
+*
+Media Queries
+*/
+
+/*Laptop Size*/
+
+@media screen and (max-width: 1280px) {
+  .logo {
+    height: 50px;
+  }
+
+  .footer{
+    height: 0;
+    padding-top: 0;
+  }
+
+  .content {
+    min-height: calc(98vh - 50px);
+  }
+
+}
+
+/*Monitor Size*/
+@media screen and (min-width: 1281px) and (max-width: 2000px) {
+  .content {
+    min-height: calc(94vh - 50px);
+  }
+
+  .statsection {
+    padding-bottom: 80px;
+  }
+
 }
